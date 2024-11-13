@@ -1,20 +1,43 @@
 package cn.buk.common;
 
 /**
- * Created by yfdai on 15/9/26.
+ *
+ * @author yfdai
  */
 public class Constant {
 
-    public static final String PNR_ENTIRELY_CANCELLED = "THIS PNR WAS ENTIRELY CANCELLED";
+    private Constant() {
+        throw new IllegalArgumentException("Constant class");
+    }
 
-    public final static String SESSION_ENTERPRISE_ID = "enterpriseId";
-    public final static String SESSION_USERNAME = "username";
-    public final static String SESSION_FULLNAME = "fullname";
-    public final static String SESSION_USERID = "userid";
-    public final static String SESSION_USER_ISADMIN = "isadmin";
-    public final static String SESSION_AMOUNT_BALANCE = "amountBalance";
-    public final static String SESSION_CAPTCHA_KEY ="session_captcha_key";
-    public final static String SESSION_LOGINED = "logined";
+    public static final String SUCCESS = "SUCCESS";
+
+    /**
+     * 常用的日期格式
+     */
+    public static final String DATE_YYYY_MM_DD = "yyyy-MM-dd";
+    /**
+     * 常用的日期格式
+     */
+    public static final String DATE_YYYYMMDD = "yyyyMMdd";
+
+    public static final String PNR_ENTIRELY_CANCELLED = "THIS PNR WAS ENTIRELY CANCELLED";
+    /**
+     * DETR结果中航班使用状态
+     */
+    public static final String DETR_OPEN_FOR_USE = "OPEN FOR USE";
+    public static final String DETR_USED_FLOWN = "USED/FLOWN";
+    public static final String DETR_EXCHANGED = "EXCHANGED";
+    public static final String DETR_REFUNDED = "REFUNDED";
+
+    public static final String SESSION_ENTERPRISE_ID = "enterpriseId";
+    public static final String SESSION_USERNAME = "username";
+    public static final String SESSION_FULLNAME = "fullname";
+    public static final String SESSION_USERID = "userid";
+    public static final String SESSION_USER_ISADMIN = "isadmin";
+    public static final String SESSION_AMOUNT_BALANCE = "amountBalance";
+    public static final String SESSION_CAPTCHA_KEY ="session_captcha_key";
+    public static final String SESSION_LOGINED = "logined";
 
 
     public static final int ALL_POLICY_TYPE = -1;
@@ -75,4 +98,15 @@ public class Constant {
     public static final int SERVER_ID_ONE1  = 1;
     public static final int SERVER_ID_FOUR = 4;
     public static final int SERVER_TASK = SERVER_ID_FOUR;
+
+    public static final int PSG_TYPE_ADU = 0; // 成人
+    public static final int PSG_TYPE_CHD = 1; // 儿童
+    public static final int PSG_TYPE_INF = 2; // 婴儿
+    public static final int PSG_TYPE_DISABLED_SERVICEMAN_POLICEMAN = 8; // 伤残军人/警察
+
+    public static final int GENDER_MALE = 1; // male 男性
+    public static final int GENDER_FEMALE = 2; // female 女性
+
+
+
 }

@@ -1,9 +1,10 @@
 package cn.buk.util;
 
-import org.junit.Test;
+import cn.buk.common.util.CheckUtil;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Author: yfdai@buk.cn
@@ -15,46 +16,85 @@ public class CheckUtilTest {
     @Test
     public void testIsMobileNo_RightMobileNo_ReturnTrue() {
         String mobileNo = "10088888888";
-        assertTrue("mobileNo is correct.", CheckUtil.isMobileNo(mobileNo));
+        assertTrue(CheckUtil.isMobileNo(mobileNo));
         mobileNo = "11088888888";
-        assertTrue("mobileNo is correct.", CheckUtil.isMobileNo(mobileNo));
+        assertTrue(CheckUtil.isMobileNo(mobileNo));
         mobileNo = "12088888888";
-        assertTrue("mobileNo is correct.", CheckUtil.isMobileNo(mobileNo));
+        assertTrue(CheckUtil.isMobileNo(mobileNo));
         mobileNo = "13088888888";
-        assertTrue("mobileNo is correct.", CheckUtil.isMobileNo(mobileNo));
+        assertTrue(CheckUtil.isMobileNo(mobileNo));
         mobileNo = "14088888888";
-        assertTrue("mobileNo is correct.", CheckUtil.isMobileNo(mobileNo));
+        assertTrue(CheckUtil.isMobileNo(mobileNo));
         mobileNo = "15088888888";
-        assertTrue("mobileNo is correct.", CheckUtil.isMobileNo(mobileNo));
+        assertTrue(CheckUtil.isMobileNo(mobileNo));
         mobileNo = "16088888888";
-        assertTrue("mobileNo is correct.", CheckUtil.isMobileNo(mobileNo));
+        assertTrue(CheckUtil.isMobileNo(mobileNo));
         mobileNo = "17088888888";
-        assertTrue("mobileNo is correct.", CheckUtil.isMobileNo(mobileNo));
+        assertTrue(CheckUtil.isMobileNo(mobileNo));
         mobileNo = "18088888888";
-        assertTrue("mobileNo is correct.", CheckUtil.isMobileNo(mobileNo));
+        assertTrue(CheckUtil.isMobileNo(mobileNo));
         mobileNo = "19088888888";
-        assertTrue("mobileNo is correct.", CheckUtil.isMobileNo(mobileNo));
+        assertTrue(CheckUtil.isMobileNo(mobileNo));
     }
 
     @Test
     public void testIsMobileNo_MobileNoLengthNotEleven_ReturnFalse() {
         String mobileNo = "130617388766";
 
-        assertFalse("mobileNo's length is not correct.", CheckUtil.isMobileNo(mobileNo));
+        assertFalse(CheckUtil.isMobileNo(mobileNo));
     }
 
     @Test
     public void testIsMobileNo_MobileNoLengthShort_ReturnFalse() {
         String mobileNo = "1306173837";
 
-        assertFalse("mobileNo's length is not correct.", CheckUtil.isMobileNo(mobileNo));
+        assertFalse(CheckUtil.isMobileNo(mobileNo));
     }
 
     @Test
     public void testIsMobileNo_MobileNoIncludeIllegelChar_ReturnFalse() {
         String mobileNo = "130a1738b76";
 
-        assertFalse("mobileNo include illegal character.", CheckUtil.isMobileNo(mobileNo));
+        assertFalse(CheckUtil.isMobileNo(mobileNo));
+    }
+
+    @Test
+    public void testDateFormat_ReturnTrue() {
+        String temp = "2017-12-31";
+
+        assertTrue(CheckUtil.isDate(temp));
+    }
+
+    @Test
+    public void testDateFormat_ReturnFalse() {
+        String temp = "2017-12-AA";
+
+        assertFalse(CheckUtil.isDate(temp));
+    }
+
+    @Test
+    void test_isValidTime_return_true() {
+        String temp = "0000";
+        assertTrue(CheckUtil.isValidTime(temp));
+
+        temp = "00:00";
+        assertTrue(CheckUtil.isValidTime(temp));
+
+        temp = "2359";
+        assertTrue(CheckUtil.isValidTime(temp));
+
+        temp = "23:59";
+        assertTrue(CheckUtil.isValidTime(temp));
+
+        temp = "0930";
+        assertTrue(CheckUtil.isValidTime(temp));
+
+        temp = "1930";
+        assertTrue(CheckUtil.isValidTime(temp));
+
+
+        temp = "33:59";
+        assertFalse(CheckUtil.isValidTime(temp));
     }
 
     @Test

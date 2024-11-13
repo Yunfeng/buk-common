@@ -1,0 +1,17 @@
+{
+  "errcode": 0,
+  "id": 65383,
+  "orderNo": "100160843",
+  "costCenter": "",
+  "projectName": "",
+  "payType": 8,
+  "payStatus": 0,
+  "total": 1000,
+  "customerName": "AAT",
+  "customerCode": "6888",
+  "approvalDenyReason": null,
+  "approvalStatus": null,
+  "specifiedApprover": null,
+  "violationReason": null,
+  "violationStatus": null
+}

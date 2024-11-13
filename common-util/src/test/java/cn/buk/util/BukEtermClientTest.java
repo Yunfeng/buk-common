@@ -1,67 +1,58 @@
 package cn.buk.util;
 
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
+import cn.buk.common.util.BukEtermClient;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by yfdai on 2017/1/14.
  */
+@Disabled
 public class BukEtermClientTest {
 
-    private BukEtermClient client;
+    private BukEtermClient eterm;
 
-    @Before
+    @BeforeEach
     public void init() {
-        client = new BukEtermClient();
-//        client.setRemoteHost("172.168.1.110");
-//        client.setRemotePort(350);
-//        client.setUsername(".dyf");
-//        client.setPassword("buk");
-
-        client.setRemoteHost("aws1.buk.cn");
-        client.setRemotePort(350);
-        client.setUsername("free1");
-        client.setPassword("free.1");
-
-
+        eterm = new BukEtermClient("aws1.buk.cn", 350,"test1", "1test", 3000);
     }
 
-    @Ignore
-    @Test
-    public void testCmd() throws Exception {
-        client.connect();
-        Thread.sleep(3000);
-        boolean b = client.isConnected();
-        System.out.println(b);
-
-        client.login();
-
-        System.out.println(client.isLogined());
-
-    }
-
-    @Ignore
+    @Disabled
     @Test
     public void testAvCmd() throws IOException, InterruptedException {
-        if (!client.isLogined()) {
-            client.connect();
-            client.login();
+        if (!eterm.isConnected()) {
+            eterm.connect();
         }
 
-        if (!client.isLogined()) {
+        if (!eterm.isLogined()) {
+            eterm.connect();
+            eterm.login();
+        }
+
+        if (!eterm.isLogined()) {
             System.out.println("not logined");
             return;
         }
 
-        String rs = client.rt("HZG06X");
-        String[] lines = rs.split("\r");
-        for (String line : lines)
-            System.out.println(line);
+        String rs;
+
+//        rs = eterm.execCmd("AV SHAHAK/.");
+//        if (rs != null)
+//            System.out.println("rs: " + rs.length() + "\r\n" + rs.substring(7).replaceAll("\r", "\r\n"));
+//
+//
+//        rs = eterm.execCmd("AV SHAHAK/+");
+//        System.out.println("rs: " + rs.length() + "\r\n" + rs.substring(7).replaceAll("\r", "\r\n"));
+
+//        rs = eterm.execCmd("FD:HFEPEK/MU");
+//        System.out.println("rs: " + rs.length() + "\r\n" + rs.substring(7).replaceAll("\r", "\r\n"));
+
+        rs = eterm.execCmd("NFD:HFEPEK/MU#T");
+        System.out.println("rs: " + rs.length() + "\r\n" + rs.substring(7).replaceAll("\r", "\r\n"));
+
     }
 
 
