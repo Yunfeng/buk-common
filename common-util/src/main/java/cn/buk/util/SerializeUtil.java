@@ -1,6 +1,8 @@
 package cn.buk.util;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 
 import java.io.*;
 
@@ -8,7 +10,8 @@ import java.io.*;
  * Created by yfdai on 2015-3-28.
  */
 public class SerializeUtil {
-    private static Logger logger = Logger.getLogger(SerializeUtil.class);
+//    private static Logger logger = Logger.getLogger(SerializeUtil.class);
+    private static final Logger logger = LogManager.getLogger(SerializeUtil.class);
 
     public static byte[] serialize(Object object) throws IOException {
         ObjectOutputStream oos = null;

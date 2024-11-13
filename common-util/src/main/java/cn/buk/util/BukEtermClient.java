@@ -1,7 +1,8 @@
 package cn.buk.util;
 
 import cn.buk.common.Constant;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.io.*;
 import java.net.InetSocketAddress;
@@ -14,7 +15,8 @@ import java.util.Date;
  */
 public class BukEtermClient {
 
-    private static final Logger logger = Logger.getLogger(BukEtermClient.class);
+//    private static final Logger logger = Logger.getLogger(BukEtermClient.class);
+    private static final Logger logger = LogManager.getLogger(BukEtermClient.class);
 
     private String remoteHost;
     private int remotePort;
