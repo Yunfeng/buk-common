@@ -7,3 +7,8 @@ mvn release:perform -DuseReleaseProfile=src
 
 发布时使用以上格式，不会生成javadoc
 javadock出错的地方太多，无法改进。
+
+
+## Maven 仓库推送
+
+mvn clean install org.apache.maven.plugins:maven-deploy-plugin:2.8:deploy -DskipTests

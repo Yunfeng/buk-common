@@ -16,9 +16,9 @@ public interface RedisDao {
 
   String getStr(String key, Charset charset);
 
-  int incr(String key, long expiredSeconds);
+  long incr(String key, long expiredSeconds);
 
-  int incrApiCallCount(String key, long expiredSeconds, int maxCalls);
+  long incrApiCallCount(String key, long expiredSeconds, int maxCalls);
 
   String set(String key, byte[] value);
 
@@ -28,18 +28,18 @@ public interface RedisDao {
 
   String setAndExpireAt(String key, byte[] value, long unixTime);
 
-  int addToList(String key, String value);
+  long addToList(String key, String value);
 
   String getFromList(String key);
 
-  int getListCount(String key);
+  long getListCount(String key);
 
   List<String> getAllAndEmptyList(String key);
 
 
   Boolean exists(String key);
 
-  int remove(String key);
+  long remove(String key);
 
   /**
    * 获取集合key中得所有成员

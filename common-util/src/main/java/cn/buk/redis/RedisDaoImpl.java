@@ -42,8 +42,8 @@ public class RedisDaoImpl implements RedisDao {
   }
 
   @Override
-  public int incr(String key, long expiredSeconds) {
-    int retCode = 0;
+  public long incr(String key, long expiredSeconds) {
+    long retCode = 0;
     if (!isUsed()) {
       return retCode;
     }
@@ -52,7 +52,7 @@ public class RedisDaoImpl implements RedisDao {
     Jedis jedis = JedisUtil.getInstance().getJedis(host, port);
     try {
       if (jedis != null) {
-        retCode = Integer.parseInt(jedis.incr(key.getBytes()).toString());
+        retCode =  jedis.incr(key.getBytes());
         jedis.expire(key.getBytes(), expiredSeconds);
       } else {
         logger.error("jedis is null.");
@@ -71,8 +71,8 @@ public class RedisDaoImpl implements RedisDao {
    *
    */
   @Override
-  public int incrApiCallCount(final String key, final long expiredSeconds, final int maxCalls) {
-    int retCode = 0;
+  public long incrApiCallCount(final String key, final long expiredSeconds, final int maxCalls) {
+    long retCode = 0;
     if (!isUsed()) {
       return retCode;
     }
@@ -98,7 +98,7 @@ public class RedisDaoImpl implements RedisDao {
         } else {
           int intvalue = Integer.parseInt(value);
           if (intvalue < maxCalls) {
-            retCode = jedis.incr(key).intValue();
+            retCode = jedis.incr(key);
           }
         }
       } else {
@@ -198,8 +198,8 @@ public class RedisDaoImpl implements RedisDao {
   }
 
   @Override
-  public int addToList(String key, String value) {
-    int retCode = 0;
+  public long addToList(String key, String value) {
+    long retCode = 0;
     if (!isUsed()) {
       return 0;
     }
@@ -207,7 +207,7 @@ public class RedisDaoImpl implements RedisDao {
     Jedis jedis = JedisUtil.getInstance().getJedis(host, port);
     try {
       if (jedis != null) {
-        retCode = (jedis.rpush(key, value)).intValue();
+        retCode = jedis.rpush(key, value);
       }
     } finally {
       JedisUtil.getInstance().closeJedis(jedis, host, port);
@@ -237,8 +237,8 @@ public class RedisDaoImpl implements RedisDao {
 
 
   @Override
-  public int getListCount(final String key) {
-    int retCode = 0;
+  public long getListCount(final String key) {
+    long retCode = 0;
     if (!isUsed()) {
       return 0;
     }
@@ -246,7 +246,7 @@ public class RedisDaoImpl implements RedisDao {
     Jedis jedis = JedisUtil.getInstance().getJedis(host, port);
     try {
       if (jedis != null) {
-        retCode = jedis.llen(key).intValue();
+        retCode =  jedis.llen(key);
       }
     } finally {
       JedisUtil.getInstance().closeJedis(jedis, host, port);
@@ -332,7 +332,7 @@ public class RedisDaoImpl implements RedisDao {
   }
 
   @Override
-  public int remove(String key) {
+  public long remove(String key) {
     if (!isUsed()) {
       return 0;
     }
@@ -343,7 +343,7 @@ public class RedisDaoImpl implements RedisDao {
         return 0;
       }
 
-      return jedis.del(key).intValue();
+      return  jedis.del(key);
     } finally {
       JedisUtil.getInstance().closeJedis(jedis, host, port);
     }
