@@ -5,8 +5,8 @@ import cn.buk.common.dto.eterm.PnrFlightDto;
 import cn.buk.common.dto.eterm.PnrPassengerDto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
