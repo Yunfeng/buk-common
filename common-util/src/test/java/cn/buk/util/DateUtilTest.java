@@ -232,4 +232,12 @@ public class DateUtilTest {
 		Date bd = DateUtil.convertToDate(idNo.substring(6, 14), "yyyyMMdd");
 		System.out.println(DateUtil.formatDate(bd, "yyyy-MM-dd"));
 	}
+
+	@Test
+	public void testConvertDate() throws ParseException {
+		final String date = "2025-02-25";
+		Date d = DateUtil.convertToDate(date, "yyyy-MM-dd");
+		System.out.println(d);
+		System.out.println(cn.buk.util.DateUtil.formatDate(d, "yyyy-MM-dd"));
+	}
 }

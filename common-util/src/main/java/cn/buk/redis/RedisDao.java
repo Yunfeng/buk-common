@@ -62,4 +62,13 @@ public interface RedisDao {
    * 取集合key1和key2的差集
    */
   Set<String> sdiff(String key1, String key2);
+
+  /**
+   * SETNX actually means "SET if Not eXists".
+   * @param key
+   * @param value
+   * @param expiredSeconds
+   * @return
+   */
+  long setNx(String key, String value, long expiredSeconds);
 }

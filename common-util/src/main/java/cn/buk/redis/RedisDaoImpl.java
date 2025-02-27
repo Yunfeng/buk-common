@@ -441,6 +441,26 @@ public class RedisDaoImpl implements RedisDao {
     return retVal == null ? new HashSet<>() : retVal;
   }
 
+  @Override
+  public long setNx(String key, String value, long expiredSeconds) {
+    long retVal = 0;
+    if (isUsed()) {
+      Jedis jedis = JedisUtil.getInstance().getJedis(host, port);
+      try {
+        if (jedis != null) {
+          retVal = jedis.setnx(key, value);
+          if (retVal == 1) {
+            jedis.expire(key, expiredSeconds);
+          }
+        }
+      } finally {
+        JedisUtil.getInstance().closeJedis(jedis, host, port);
+      }
+    }
+
+    return retVal;
+  }
+
   public String getHost() {
     return host;
   }
