@@ -12,3 +12,10 @@ javadock出错的地方太多，无法改进。
 ## Maven 仓库推送
 ```
 mvn clean install org.apache.maven.plugins:maven-deploy-plugin:2.8:deploy -DskipTests
+
+## git
+git config --global user.name "yfdai"
+git config --global user.email "yfdai@buk.cn"
+git config --global credential.helper store
+git config --global credential.helper cache
+git config --global credential.helper 'cache --timeout=3600'
