@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cn.buk.common</groupId>
-    <artifactId>buk-util</artifactId>
+    <artifactId>buk-common</artifactId>
     <version>2.8.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
